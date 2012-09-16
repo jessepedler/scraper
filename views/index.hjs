@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/css/bootstrap-responsive.min.css'/>
+    <link rel='stylesheet' href='/css/style.css'/>
+</head>
+<body>
+    <h1>Snippet Sniper</h1>
+
+    <div id="main"></div>
+
+    <script data-main="js/config" src="/js/require/require.js"></script>
+
+</body>
+</html>
