@@ -52,7 +52,7 @@ define([
                 url: this.$url.val()
             });
 
-            this.$results.append(result.el);
+            this.$results.prepend(result.el);
 
             this.$url.val("");
 

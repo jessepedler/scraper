@@ -1,0 +1,17 @@
+<h3>Meta Data</h3>
+<table class="table " class="meta-table">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Contents</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#data}}
+    <tr>
+        <td>{{key}}</td>
+        <td data-type="{{key}}">{{value}}</td>
+    </tr>
+    {{/data}}
+    </tbody>
+</table>

@@ -7,9 +7,11 @@
     <link rel='stylesheet' href='/css/style.css'/>
 </head>
 <body>
-    <h1>Snippet Sniper</h1>
+    <div class="container-fluid">
+        <h1>Snippet Sniper</h1>
 
-    <div id="main"></div>
+        <div id="main"></div>
+    </div>
 
     <script data-main="js/config" src="/js/require/require.js"></script>
 
