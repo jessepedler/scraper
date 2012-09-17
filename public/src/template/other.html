@@ -1,0 +1,18 @@
+<h3>Other Data</h3>
+        <p class="muted">First H1 tag and first substantial paragraph tag</p>
+<table class="table " class="og-table">
+    <thead>
+    <tr>
+        <th>Tag</th>
+        <th>Contents</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#data}}
+    <tr>
+        <td>{{key}}</td>
+        <td data-type="{{key}}">{{value}}</td>
+    </tr>
+    {{/data}}
+    </tbody>
+</table>

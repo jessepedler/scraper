@@ -7,10 +7,11 @@ define([
     "plugin/text!template/og.html",
     "plugin/text!template/meta.html",
     "plugin/text!template/success.html",
+    "plugin/text!template/other.html",
     "plugin/text!template/images.html"
 
 
-], function ($, _, Backbone, Hogan, template, ogTemplate, metaTemplate, successTemplate, imagesTemplate) {
+], function ($, _, Backbone, Hogan, template, ogTemplate, metaTemplate, successTemplate, otherTemplate, imagesTemplate) {
 
     'use strict';
 
@@ -18,8 +19,9 @@ define([
     var compiledTemplate = Hogan.compile(template);
     var compiledOGTemplate = Hogan.compile(ogTemplate);
     var compiledMetaTemplate = Hogan.compile(metaTemplate);
-    var compledSuccessTemplate = Hogan.compile(successTemplate);
-    var compledImagesTemplate = Hogan.compile(imagesTemplate);
+    var compiledSuccessTemplate = Hogan.compile(successTemplate);
+    var compiledOtherTemplate = Hogan.compile(otherTemplate);
+    var compiledImagesTemplate = Hogan.compile(imagesTemplate);
 
     return Backbone.View.extend({
 
@@ -54,6 +56,7 @@ define([
             this.$og = this.$(".og-results");
             this.$meta = this.$(".meta-results");
             this.$images = this.$(".img-results");
+            this.$other = this.$(".other-results");
 
             return this;
 
@@ -65,7 +68,7 @@ define([
 
             console.debug("data", data);
 
-            this.$alert.replaceWith(compledSuccessTemplate.render({
+            this.$alert.replaceWith(compiledSuccessTemplate.render({
                 url  : this.options.url,
                 title: data.title
             }));
@@ -112,8 +115,19 @@ define([
                 }));
             }
 
+            if (!_.isEmpty(data.html)) {
+                this.$other.html(compiledOtherTemplate.render({
+                    data: _.map(data.html, function (value, key) {
+                        return {
+                            key  : key,
+                            value: value
+                        };
+                    })
+                }));
+            }
+
             if (!_.isEmpty(data.images)) {
-                this.$images.html(compledImagesTemplate.render({
+                this.$images.html(compiledImagesTemplate.render({
                     images: data.images
                 }));
             }

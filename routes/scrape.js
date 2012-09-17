@@ -22,7 +22,11 @@ module.exports = function (req, res) {
             var $ = window.$;
 
             var ogProperties = ["site_name", "type", "url", "title", "description", "image"];
-            var metaProperties = ["description", "keywords", "cononical"];
+            var metaProperties = ["description", "Description", "DESCRIPTION", "keywords", "Keywords", "KEYWORDS", "cononical", "Cononical", "CONONICAL"];
+
+//            var props = [prop];
+//            props.push(prop.toUpperCase());
+//            props.push(prop[0].toUpperCase() + prop.substr(1));
 
             var out = {
                 title : "",
@@ -48,7 +52,7 @@ module.exports = function (req, res) {
                 var src = $(this).attr("src");
 
                 if(src.indexOf("//") === 0){
-                    src = "http://" + src;
+                    src = "http:" + src;
                 }
 
                 if(src.indexOf("http") !== 0){
@@ -61,8 +65,17 @@ module.exports = function (req, res) {
 
             });
 
-            out.html.h1 = $("h1").first().html();
-            out.html.p = $("p").first().html();
+            // Get the first H1 Tag
+            out.html.h1 = $("h1").first().text();
+
+            // Get the first substantial p tag
+            $("p").each(function(){
+               var text = $(this).text().trim().replace(/(\r\n|\n|\r)/gm,"");
+                if(text.split(" ").length > 20){
+                    out.html.p = text;
+                    return false;
+                }
+            });
 
 
 
