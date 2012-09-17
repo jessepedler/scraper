@@ -1,6 +1,6 @@
 # Snippet Sniper
 
-A quick utility to start learning on how to generate snippets from links.
+A quick utility to start learning about how to generate snippets from links.
 
 ## The web today
 - Almost all of the major sites have integrated Open Graph markup.  This alone should get us 80-90% of the way to good snippets.
